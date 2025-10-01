@@ -12,16 +12,15 @@ import { Badge } from "@/components/ui/badge";
 import ProjectWebsiteButton from "@/components/atoms/ProjectWebsiteButton";
 import ReactMarkdown from "react-markdown";
 
-export default async function ProjectDetail({
+export  default async function ProjectDetail({
   params,
-  searchParams,
 }: {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
+
 
   return (
     <main className="bg-white">
