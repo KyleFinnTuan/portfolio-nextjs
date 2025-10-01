@@ -12,12 +12,14 @@ import { Badge } from "@/components/ui/badge";
 import ProjectWebsiteButton from "@/components/atoms/ProjectWebsiteButton";
 import ReactMarkdown from "react-markdown";
 
-export default async function ProjectDetail({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = await params;
+type ParamsProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export default async function ProjectDetail({ params }: ParamsProps) {
+  const { slug } = params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
 
