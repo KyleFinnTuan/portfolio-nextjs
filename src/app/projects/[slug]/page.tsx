@@ -12,14 +12,13 @@ import { Badge } from "@/components/ui/badge";
 import ProjectWebsiteButton from "@/components/atoms/ProjectWebsiteButton";
 import ReactMarkdown from "react-markdown";
 
-type PageProps = {
-  params: {
-    slug: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
-export default async function ProjectDetail({ params }: PageProps) {
+export default async function ProjectDetail({
+  params,
+  searchParams,
+}: {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
   const { slug } = params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
@@ -49,7 +48,7 @@ export default async function ProjectDetail({ params }: PageProps) {
                 <BreadcrumbItem>
                   <BreadcrumbLink
                     className="hover:underline text-lg"
-                    href={project.slug}
+                    href={`/projects/${project.slug}`}
                   >
                     {project.title}
                   </BreadcrumbLink>
