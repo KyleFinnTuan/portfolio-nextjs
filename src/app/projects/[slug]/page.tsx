@@ -12,13 +12,14 @@ import { Badge } from "@/components/ui/badge";
 import ProjectWebsiteButton from "@/components/atoms/ProjectWebsiteButton";
 import ReactMarkdown from "react-markdown";
 
-type ParamsProps = {
+type PageProps = {
   params: {
     slug: string;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export default async function ProjectDetail({ params }: ParamsProps) {
+export default async function ProjectDetail({ params }: PageProps) {
   const { slug } = params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
@@ -73,7 +74,11 @@ export default async function ProjectDetail({ params }: ParamsProps) {
             </div>
           </div>
           <Card className="py-0 overflow-hidden order-2 max-lg:order-1">
-            <img className="h-full object-cover" src={project.imgSrc} alt={project.title} />
+            <img
+              className="h-full object-cover"
+              src={project.imgSrc}
+              alt={project.title}
+            />
           </Card>
         </div>
       </section>
