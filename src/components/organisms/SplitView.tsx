@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect, useCallback } from 'react';
-import '../css/splitview.css';
+import '../css/SplitView.css';
 
 const SplitView: React.FC = () => {
   const parentRef = useRef<HTMLDivElement | null>(null);
